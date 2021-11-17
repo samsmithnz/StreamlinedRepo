@@ -21,7 +21,7 @@ jobs:
         $firstCommit = $commits[0] # extract the first commit message
         #echo "::set-env name=commitMessage::$firstCommit" # save the first commit into an environment variable for later
         echo "commit: $firstCommit"
-        echo ::set-output name=commitMessage::"$firstCommit"
+        echo ::set-output name=commitMessage::$($firstCommit)
       shell: pwsh
     - run: |
         echo "commit: ${{ steps.getCommit.outputs.commitMessage }}"
