@@ -24,7 +24,7 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         commit-message: Auto Pull Request
-        title: ${{ steps.getCommit.outputs.commitMessage }} #${{ env.commitMessage }} # ${{ github.event.commits[0].message }} # use the first commmit message
+        title: ${{ env.commitMessage }} # ${{ github.event.commits[0].message }} # use the first commmit message
         body: '' #no body
         branch: ${{ github.ref }} # The branch where you commit
         base: main
