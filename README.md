@@ -7,3 +7,4 @@ An experiment to automate aspects of my development process in GitHub and beyond
 2. [ ] Streamline Dependabot for trusted repos
 3. [ ] When merging a PR, can we delete local branches too?
 
+
