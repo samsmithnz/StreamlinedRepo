@@ -13,7 +13,7 @@ jobs:
     - run: |
         echo "pr: ${{ github.event.number }}"
     - name: Create Pull Request
-      if: github.event.number == ''
+      if: github.event.number == null
       uses: peter-evans/create-pull-request@v3.10.1
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
