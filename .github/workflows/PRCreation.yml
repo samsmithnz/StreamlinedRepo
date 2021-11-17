@@ -2,7 +2,6 @@ name: Create PR on push
 
 on:
   push:
-
   workflow_dispatch:
 
 jobs:
@@ -20,9 +19,7 @@ jobs:
         $resultValue = $result[0]
         echo "::set-env name=commitMessage::$resultValue"
       shell: pwsh
-    - run: echo ${{ env.commitMessage }}
     - name: Create Pull Request
-      if: 0 == 1
       uses: peter-evans/create-pull-request@v3.10.1
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
