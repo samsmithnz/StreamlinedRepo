@@ -18,8 +18,8 @@ jobs:
         echo "featureName: $featureName"
         mainName='origin/main'
         git status
-        echo "git log $mainName..$featureName --reverse --pretty=%s"
-        git log $mainName..$featureName --reverse --pretty=%s
+        echo "git log main..HEAD --reverse --pretty=%s"
+        git log main..HEAD --reverse --pretty=%s
         #$result = git log $mainName..$featureName --reverse --pretty=%s
         #echo "commitMessage=$result" >> $GITHUB_ENV
     - name: Create Pull Request
