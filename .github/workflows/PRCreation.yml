@@ -17,9 +17,9 @@ jobs:
         branchName="origin/${GITHUB_REF#refs/heads/}"
         echo "branchName: $branchName"
         git status
-        echo "git log main..$branchName --reverse --pretty=%s"
-        git log main..$branchName --reverse --pretty=%s
-        #$result = git log main..$branchName --reverse --pretty=%s
+        echo "git log origin/main..$branchName --reverse --pretty=%s"
+        git log origin/main..$branchName --reverse --pretty=%s
+        #$result = git log origin/main..$branchName --reverse --pretty=%s
         #echo "commitMessage=$result" >> $GITHUB_ENV
     - name: Create Pull Request
       if: 0 == 1
