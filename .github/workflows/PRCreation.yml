@@ -17,7 +17,7 @@ jobs:
         fetch-depth: 0
     - run: |
         $result = git log remotes/origin/main..HEAD --reverse --pretty=%s
-        echo "::set-env name=commitMessage::$result[0]"
+        echo "::set-env name=commitMessage::${$result[0]}"
       shell: pwsh
     - run: echo ${{ env.commitMessage }}
     - name: Create Pull Request
