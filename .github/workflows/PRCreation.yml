@@ -8,10 +8,15 @@ on:
 jobs:
   createPR:
     runs-on: ubuntu-latest
-    if: github.event.number != null && github.event.pull_request != '' && github.event.pull_request.title != ''
+    #if: github.event.number != null && github.event.pull_request != '' && github.event.pull_request.title != ''
     steps:
+    - run: |
+        echo "number: ${{ github.event.number }}" 
+        echo "pull_request: ${{ github.event.pull_request }}" 
+        echo "title: ${{ github.event.pull_request.title }}"
     - uses: actions/checkout@v2
     - name: Create Pull Request
+      if: 0 == 1
       uses: peter-evans/create-pull-request@v3.10.1
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
