@@ -14,10 +14,10 @@ jobs:
     - uses: actions/checkout@v2
     - run: |
         echo "GITHUB_REF: ${GITHUB_REF}"
-        branchName="${GITHUB_REF#refs/heads/}"
+        branchName="origin/${GITHUB_REF#refs/heads/}"
         echo "branchName: $branchName"
         echo "git log main..$branchName --reverse --pretty=%s"
-        git log main..$branchName --reverse --pretty=%s
+        git log origin/main..$branchName --reverse --pretty=%s
         #$result = git log main..$branchName --reverse --pretty=%s
         #echo "commitMessage=$result" >> $GITHUB_ENV
     - name: Create Pull Request
