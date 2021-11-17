@@ -1,5 +1,5 @@
 # StreamlinedRepo
-An experiment to automate aspects of my development process in GitHub
+An experiment to automate aspects of my development process in GitHub and beyond
 
 1. [X] **Create a PR when pushing a branch.** 
     - If the PR already exists, don't recreate it. 
