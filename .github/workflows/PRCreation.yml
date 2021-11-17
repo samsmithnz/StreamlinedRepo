@@ -16,7 +16,7 @@ jobs:
         echo "GITHUB_REF: ${GITHUB_REF}"
         featureName="origin/${GITHUB_REF#refs/heads/}"
         echo "featureName: $featureName"
-        mainName = 'origin/main'
+        mainName='origin/main'
         git status
         echo "git log $mainName..$featureName --reverse --pretty=%s"
         git log $mainName..$featureName --reverse --pretty=%s
