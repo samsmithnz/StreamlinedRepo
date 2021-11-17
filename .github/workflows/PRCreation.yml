@@ -13,11 +13,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: |
+        git branch
+    - run: |
         echo "GITHUB_REF: ${GITHUB_REF}"
         featureName="origin/${GITHUB_REF#refs/heads/}"
         echo "featureName: $featureName"
-        mainName='origin/main'
-        git branch
+        #git branch
         echo "git log main..HEAD --reverse --pretty=%s"
         git log main..HEAD --reverse --pretty=%s
         #$result = git log $mainName..$featureName --reverse --pretty=%s
