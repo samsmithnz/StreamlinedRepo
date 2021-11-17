@@ -8,15 +8,20 @@ on:
 jobs:
   createPR:
     runs-on: ubuntu-latest
+    env: 
+      commitMessage: ''
     steps:
     - uses: actions/checkout@v2
+    - run: |
+        $result = git log main..${{ github.ref }} --reverse --pretty=%s
+        echo "commitMessage=$result" >> $GITHUB_ENV
     - name: Create Pull Request
       if: github.event.number == null
       uses: peter-evans/create-pull-request@v3.10.1
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         commit-message: Auto Pull Request
-        title: ${{ github.event.commits[0].message }} # use the first commmit message
+        title: ${{ env.commitMessage }} # ${{ github.event.commits[0].message }} # use the first commmit message
         body: '' #no body
         branch: ${{ github.ref }} # The branch where you commit
         base: main
