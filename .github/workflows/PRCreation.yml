@@ -15,9 +15,9 @@ jobs:
       with:
         fetch-depth: 0
     - run: |
-        $result = git log remotes/origin/main..HEAD --reverse --pretty=%s
-        $resultValue = $result[0]
-        echo "::set-env name=commitMessage::$resultValue"
+        $commits = git log remotes/origin/main..HEAD --reverse --pretty=%s # get a list of commits for the current branch
+        $firstCommit = $commits[0] # extract the first commit message
+        echo "::set-env name=commitMessage::$firstCommit" # save the first commit into an environment variable for later
       shell: pwsh
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v3.10.1
