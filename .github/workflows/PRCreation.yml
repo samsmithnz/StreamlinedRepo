@@ -15,16 +15,11 @@ jobs:
       with:
         fetch-depth: 0
     - run: |
-        git branch --all
-    - run: |
-        #echo "GITHUB_REF: ${GITHUB_REF}"
-        #featureName="origin/${GITHUB_REF#refs/heads/}"
-        #echo "featureName: $featureName"
-        #git branch
-        #echo "git log main..HEAD --reverse --pretty=%s"
-        git log remotes/origin/main..HEAD --reverse --pretty=%s
-        #$result = git log $mainName..$featureName --reverse --pretty=%s
-        #echo "commitMessage=$result" >> $GITHUB_ENV
+        #result=git log remotes/origin/main..HEAD --reverse --pretty=%s
+        $result = git log remotes/origin/main..HEAD --reverse --pretty=%s
+        echo $result[0]
+        echo "commitMessage=$result[0]" >> $GITHUB_ENV
+      shell: pwsh
     - name: Create Pull Request
       if: 0 == 1
       uses: peter-evans/create-pull-request@v3.10.1
