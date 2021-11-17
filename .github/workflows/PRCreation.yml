@@ -22,6 +22,8 @@ jobs:
         #echo "::set-env name=commitMessage::$firstCommit" # save the first commit into an environment variable for later
         echo ::set-output name=commitMessage::"$firstCommit"
       shell: pwsh
+    - run: |
+        echo "commit: ${{ steps.getCommit.outputs.commitMessage }}"
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v3.10.1
       with:
