@@ -15,7 +15,6 @@ jobs:
       with:
         fetch-depth: 0
     - name: Get first commit message
-      id: getCommit
       run: |
         $commits = git log remotes/origin/main..HEAD --reverse --pretty=%s # get a list of commits for the current branch
         $firstCommit = $commits[0] # extract the first commit message
