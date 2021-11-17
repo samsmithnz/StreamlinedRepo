@@ -17,7 +17,7 @@ jobs:
         featureName="origin/${GITHUB_REF#refs/heads/}"
         echo "featureName: $featureName"
         mainName='origin/main'
-        git status
+        git branch
         echo "git log main..HEAD --reverse --pretty=%s"
         git log main..HEAD --reverse --pretty=%s
         #$result = git log $mainName..$featureName --reverse --pretty=%s
