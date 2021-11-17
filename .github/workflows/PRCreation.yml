@@ -18,7 +18,7 @@ jobs:
         #result=git log remotes/origin/main..HEAD --reverse --pretty=%s
         $result = git log remotes/origin/main..HEAD --reverse --pretty=%s
         echo $result[0]
-        echo "commitMessage=$result[0]" >> $GITHUB_ENV
+        echo "commitMessage=${$result[0]}" >> $GITHUB_ENV
       shell: pwsh
     - run: echo ${{ env.commitMessage }}
     - name: Create Pull Request
