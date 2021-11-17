@@ -20,6 +20,7 @@ jobs:
         echo $result[0]
         echo "commitMessage=$result[0]" >> $GITHUB_ENV
       shell: pwsh
+    - run: echo ${{ env.commitMessage }}
     - name: Create Pull Request
       if: 0 == 1
       uses: peter-evans/create-pull-request@v3.10.1
