@@ -11,9 +11,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: |
-        echo "pr: ${{ github.event.pull_request.title }}"
+        echo "pr: ${{ github.event.number }}"
     - name: Create Pull Request
-      if: github.event.pull_request.title == ''
+      if: github.event.number == ''
       uses: peter-evans/create-pull-request@v3.10.1
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
