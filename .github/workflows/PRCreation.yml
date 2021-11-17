@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: |
-        $result = git log main..${{ GITHUB_REF##*/ }} --reverse --pretty=%s
+        $result = git log main..${ GITHUB_REF##*/ } --reverse --pretty=%s
         echo "commitMessage=$result" >> $GITHUB_ENV
     - name: Create Pull Request
       if: github.event.number == null
