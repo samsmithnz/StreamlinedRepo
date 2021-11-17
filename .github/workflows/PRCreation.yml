@@ -20,6 +20,8 @@ jobs:
         $firstCommit = $commits[0] # extract the first commit message
         echo "::set-env name=commitMessage::$firstCommit" # save the first commit into an environment variable for later
       shell: pwsh
+    - run: |
+        echo ${{ github.event.number }}
     - name: Create Pull Request
       if: github.event.number == null
       uses: peter-evans/create-pull-request@v3.10.1
