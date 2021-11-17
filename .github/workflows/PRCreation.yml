@@ -10,7 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - run: echo "pr: ${{ github.event.pull_request.title }}"
+    - run: |
+        echo "pr: ${{ github.event.pull_request.title }}"
     - name: Create Pull Request
       if: github.event.pull_request.title == ''
       uses: peter-evans/create-pull-request@v3.10.1
