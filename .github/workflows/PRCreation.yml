@@ -9,7 +9,7 @@ on:
 jobs:
   createPR:
     runs-on: ubuntu-latest
-    if: github.event.number != null #  this only runs when in a PR
+    #if: github.event.number != null #  this only runs when in a PR
     #if: github.event.number != null && github.event.pull_request != '' && github.event.pull_request.title != ''
     steps:
     - run: |
