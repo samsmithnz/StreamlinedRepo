@@ -14,13 +14,13 @@ jobs:
     - uses: actions/checkout@v2
     - run: |
         echo "GITHUB_REF: ${GITHUB_REF}"
-        echo "GITHUB_HEAD_REF: ${GITHUB_HEAD_REF}"
-        echo "git log main..${GITHUB_HEAD_REF#refs/heads/} --reverse --pretty=%s"
-        git log main..${GITHUB_HEAD_REF#refs/heads/} --reverse --pretty=%s
+        branchName = "${GITHUB_REF#refs/heads/}"
+        echo "branchName: $branchName"
+        echo "git log main..$branchName --reverse --pretty=%s"
+        git log main..$branchName --reverse --pretty=%s
         #$result = git log main..${GITHUB_REF#refs/heads/} --reverse --pretty=%s
         #echo "commitMessage=$result" >> $GITHUB_ENV
     - name: Create Pull Request
-      if: github.event.number == null
       uses: peter-evans/create-pull-request@v3.10.1
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
