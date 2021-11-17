@@ -16,6 +16,7 @@ jobs:
         echo "title: ${{ github.event.pull_request.title }}"
         echo "message: ${{ github.event.commits[0].message }}"
         echo "message count: ${{ github.event.commits }}" 
+        env
     - uses: actions/checkout@v2
     - name: Create Pull Request
       if: 0 == 1
