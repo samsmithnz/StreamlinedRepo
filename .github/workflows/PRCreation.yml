@@ -3,8 +3,7 @@ name: Create PR on push
 
 on:
   push:
-    branches-ignore: [main]
-  workflow_dispatch:
+  pull_request: 
 
 jobs:
   createPR:
@@ -24,10 +23,10 @@ jobs:
         echo "::set-env name=commitMessage::$firstCommit" # save the first commit into an environment variable for later
       shell: pwsh
     - run: |
-        echo ${{ github.event.pull_request.number }}
+        echo "PR#: ${{ github.event.pull_request.number }}"
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v3.10.1
-      #if: github.event.pull_request.number == null
+      if: github.event.pull_request.number == null
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         commit-message: Auto Pull Request
