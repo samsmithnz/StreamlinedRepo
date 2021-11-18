@@ -23,7 +23,7 @@ jobs:
       shell: pwsh
     - run: |
         echo $GITHUB_REF | awk 'BEGIN { FS = "/" } ; { print $3 }'
-        ecbo ($GITHUB_REF | awk 'BEGIN { FS = "/" } ; { print $3 })==null
+        echo ($GITHUB_REF | awk 'BEGIN { FS = "/" } ; { print $3 })==null
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v3.10.1
       if: github.event.pull_request.number == null
