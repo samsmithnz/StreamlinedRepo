@@ -24,7 +24,6 @@ jobs:
       shell: pwsh
     - run: |
         echo ${{ github.event.pull_request.number }}
-        echo ${{ github.event.number == null }}
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v3.10.1
       if: github.event.pull_request.number == null
