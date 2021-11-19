@@ -24,6 +24,7 @@ jobs:
         echo "::set-env name=commitMessage::$firstCommit" # save the first commit into an environment variable for later
       shell: pwsh
    # - run: |
+   #
    #     # note that these require the pull_request trigger to show data correctly
    #     echo "PR: ${{ github.event.pull_request }}"
    #     echo "PR number: ${{ github.event.pull_request.number }}"
