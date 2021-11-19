@@ -4,6 +4,7 @@ name: Create PR on push
 on:
   push:
   pull_request:
+    branches: [main]
 
 jobs:
   createPR:
