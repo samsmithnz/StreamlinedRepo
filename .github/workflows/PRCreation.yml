@@ -20,6 +20,7 @@ jobs:
     - name: Get first commit message
       run: |
         $commits = git log remotes/origin/main..HEAD --reverse --pretty=%s # get a list of commits for the current branch
+        #$commits.length
         #$firstCommit = $commits[0] # extract the first commit message
         echo "::set-env name=commitMessage::$($commits[0])" # save the first commit into an environment variable for later
       shell: pwsh
