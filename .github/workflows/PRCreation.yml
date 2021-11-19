@@ -2,8 +2,10 @@ name: Create PR on push
 #Note: There is a limitation - it will always use the first commit message - and will any overwrite changes to the PR title.
 
 on:
-  push:
-  pull_request: 
+  #push:
+  pull_request:     
+    branches:
+    - main
 
 jobs:
   createPR:
