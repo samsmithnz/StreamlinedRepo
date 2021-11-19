@@ -21,7 +21,7 @@ jobs:
       run: |
         $commits = git log remotes/origin/main..HEAD --reverse --pretty=%s # get a list of commits for the current branch
         # extract the first commit message
-        $firstCommit = {if ($commits -is [array]) {$commits[0]} else {$commits}}
+        $firstCommit = if ($commits -is [array]) {$commits[0]} else {$commits}
         echo "::set-env name=commitMessage::$firstCommit" # save the first commit into an environment variable for later
       shell: pwsh
    # - run: |
