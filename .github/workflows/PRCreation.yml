@@ -27,7 +27,7 @@ jobs:
     - run: |
         echo "PR: ${{ github.event.pull_request }}"
         echo "PR number: ${{ github.event.pull_request.number }}"
-        echo "PR name: ${{ github.event.pull_request.name }}" 
+        echo "PR title: ${{ github.event.pull_request.title }}" 
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v3.10.1
       if: github.event.pull_request.number == null # requires the pull_request trigger
