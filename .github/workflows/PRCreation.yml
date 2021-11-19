@@ -1,10 +1,8 @@
 name: Create PR on push
-#Note: There is a limitation - it will always use the first commit message - and will any overwrite changes to the PR title.
+#Note: There is a limitation - it will always use the first commit message - and future commits overwrite any changes to the PR title.
 
 on:
   push:
-  #pull_request:
-  #  branches: [main]
 
 jobs:
   createPR:
@@ -20,17 +18,10 @@ jobs:
     - name: Get first commit message
       run: |
         $commits = git log remotes/origin/main..HEAD --reverse --pretty=%s # get a list of commits for the current branch
-        $firstCommit = $commits[0] # extract the first commit message
-        echo "::set-env name=commitMessage::$firstCommit" # save the first commit into an environment variable for later
-      shell: pwsh
-   # - run: |
-   #     # note that these require the pull_request trigger to show data correctly
-   #     echo "PR: ${{ github.event.pull_request }}"
-   #     echo "PR number: ${{ github.event.pull_request.number }}"
-   #     echo "PR title: ${{ github.event.pull_request.title }}" 
+        echo "::set-env name=commitMessage::$(if ($commits -is [array]) {$commits[0]} else {$commits})" # save the first commit into an environment variable for later
+      shell: pwsh 
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v3.10.1
-   #   if: github.event.pull_request.number == null # will be null unless this is triggered on the pull_request trigger
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         commit-message: Auto Pull Request
